@@ -24,6 +24,8 @@ npm run build
 npm run lint
 ```
 
+凌太郎参上！！
+
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
