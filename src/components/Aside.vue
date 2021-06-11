@@ -1,3 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <div>
+      <router-link></router-link>
+    </div>
+  </div>
 </template>

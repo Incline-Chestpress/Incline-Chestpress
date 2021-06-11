@@ -1,12 +1,19 @@
 <template>
   <div id="app">
+    7
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/status">Status</router-link>
     </div>
     <router-view />
   </div>
 </template>
+./views/Status.vue ./views/Status.vue
+
+<script>
+import { defineComponent } from "@vue/composition-api"
+
+export default {}
+</script>
 
 <style>
 #app {
