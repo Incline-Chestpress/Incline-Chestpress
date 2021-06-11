@@ -1,5 +1,5 @@
 <template>
-<div>
+  <div>
     <div class="box">
       <div class="box-head">
         <!-- <h3 id="save-button" v-on:click="saveTodo">Save</h3> -->
@@ -12,11 +12,16 @@
         <tr class="todo-card" v-for="(card, i) in cards" v-bind:key="i">
           <!-- <td>{{ i }}</td> -->
           <td class="cards" id="task-catd">{{ card.tasks }}</td>
-          <td class="cards" id="weight-catd">{{weight.tasks}}kg</td>
+          <td class="cards" id="weight-catd">{{ weight.tasks }}kg</td>
           <td class="cards" id="number-catd">{{ card.numbers }}</td>
           <td class="cards" id="set-catd">{{ card.sets }}</td>
-          <td class="delete-button" v-on:click="deleteTodo">
-            <img src="@/img/MinusIcon.png" height="30px" width="30px" alt="" />
+          <td id="delete-button" v-on:click="deleteTodo(i)">
+            <img
+              src="@/img/DeleteButton.png"
+              height="15px"
+              width="15px"
+              alt=""
+            />
           </td>
         </tr>
       </table>
@@ -25,7 +30,7 @@
       <tr class="todo-item">
         <td class="task-td"><input type="text" v-model="taskData" /></td>
         <td class="weight-td">
-            <input type="number" v-model="weightData">
+          <input type="number" v-model="weightData" />
         </td>
         <td class="time-td">
           <input list="NumberTime" v-model="numberData" />
@@ -52,56 +57,49 @@
             <option value="6セット"></option>
           </datalist>
         </td>
-        <td class="add-td" v-on:click="addTodo">
-          <div class="add-button">
-            <img src="@/img/PlusIcon.png" width="30px" height="30px" alt="" />
-          </div>
+        <td class="add-button" v-on:click="addTodo">
+          <img src="@/img/PlusIcon.png" width="30px" height="30px" alt="" />
         </td>
       </tr>
     </table>
   </div>
 </template>
 <script>
-import { defineComponent } from '@vue/composition-api'
-
-export default{
-    data(){
-        return{
-            taskData:"",
-            wightData:"",
-            numberData:"",
-            setData:""
-        }
-    },
-    methods:{
-        addTodo(){
-            if (
+// import { defineComponent } from "@vue/composition-api"
+export default {
+  data() {
+    return {
+      taskData: "",
+      weightData: "",
+      numberData: "",
+      setData: "",
+    }
+  },
+  methods: {
+    addTodo() {
+      if (
         this.taskData !== "" &&
-        this.wightData !== "" &&
+        this.weightData !== "" &&
         this.numberData !== "" &&
         this.setData !== ""
       ) {
         let task = { item: this.taskData }
-        let weight = {item: this.weightData}
+        let weight = { item: this.weightData }
         let number = { item: this.numberData }
         let set = { item: this.setData }
         this.cards.push({
           tasks: task.item,
-          weights: wight.item,
+          weights: weight.item,
           numbers: number.item,
           sets: set.item,
         })
-        localStorage.setItem("storedCard", JSON.stringify(this.cards))
-        // localStorage.task = this.taskData
-        // localStorage.number = this.numberData
-        // localStorage.set = this.setData
-        this.taskData = ""
-        this.weightData = ""
-        this.numberData = ""
-        this.setData = ""
       }
     },
-  }
+    deleteTodo(i) {
+      if (confirm("本当に削除してよろしいですか？")) {
+        this.cards.splice(i, 1)
+      }
+    },
+  },
 }
-
 </script>
