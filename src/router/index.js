@@ -1,7 +1,7 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
-import BeforeSignIn from "@/views/BeforeSignIn.vue"
-import AfterSignIn from "@/views/AfterSignIn.vue"
+// import BeforeSignIn from "@/views/BeforeSignIn.vue"
+// import AfterSignIn from "@/views/AfterSignIn.vue"
 import Status from "@/views/Status.vue"
 import MyPage from "@/views/MyPage.vue"
 import firebase from "firebase"
@@ -13,16 +13,16 @@ const routes = [
     path: "/",
     redirect: "/BeforeSignIn",
   },
-  {
-    path: "/BeforeSignIn",
-    name: "BeforeSignIn",
-    component: BeforeSignIn,
-  },
-  {
-    path: "/AfterSignIn",
-    name: "AfterSignIn",
-    component: AfterSignIn,
-  },
+  // {
+  //   path: "/BeforeSignIn",
+  //   name: "BeforeSignIn",
+  //   component: BeforeSignIn,
+  // },
+  // {
+  //   path: "/AfterSignIn",
+  //   name: "AfterSignIn",
+  //   component: AfterSignIn,
+  // },
   {
     path: "/status",
     name: "Status",

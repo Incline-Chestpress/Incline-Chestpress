@@ -2,22 +2,22 @@
   <div>
     <div class="box">
       <div class="box-head">
-        <!-- <h3 id="save-button" v-on:click="saveTodo">Save</h3> -->
         <h3>Task</h3>
         <h3>Weight</h3>
         <h3>Number of Time</h3>
         <h3>Set</h3>
+        <button id="save-button" v-on:click="saveTodo">Done</button>
       </div>
       <table class="card-container">
         <tr class="todo-card" v-for="(todo, i) in todos" v-bind:key="i">
           <!-- <td>{{ i }}</td> -->
-          <td class="cards" id="task-catd">{{ todo.tasks }}</td>
-          <td class="cards" id="weight-catd">{{ todo.weights }}kg</td>
-          <td class="cards" id="number-catd">{{ todo.numbers }}</td>
-          <td class="cards" id="set-catd">{{ todo.sets }}</td>
+          <td class="todos" id="task-catd">{{ todo.tasks }}</td>
+          <td class="todos" id="weight-catd">{{ todo.weights }}kg</td>
+          <td class="todos" id="number-catd">{{ todo.numbers }}</td>
+          <td class="todos" id="set-catd">{{ todo.sets }}</td>
           <td id="delete-button" v-on:click="deleteTodo(i)">
             <img
-              src="@/img/DeleteButton.png"
+              src="@/components/img/DeleteButton.png"
               height="15px"
               width="15px"
               alt=""
@@ -58,7 +58,12 @@
           </datalist>
         </td>
         <td class="add-button" v-on:click="addTodo">
-          <img src="@/img/PlusIcon.png" width="30px" height="30px" alt="" />
+          <img
+            src="@/components/img/PlusIcon.png"
+            width="30px"
+            height="30px"
+            alt=""
+          />
         </td>
       </tr>
     </table>
@@ -66,6 +71,7 @@
 </template>
 <script>
 // import { defineComponent } from "@vue/composition-api"
+import firebase from "firebase"
 export default {
   data() {
     return {
@@ -73,6 +79,8 @@ export default {
       weightData: "",
       numberData: "",
       setData: "",
+      todos: [],
+      // users: [],
     }
   },
   methods: {
@@ -93,12 +101,22 @@ export default {
           numbers: number.item,
           sets: set.item,
         })
+        this.taskData = ""
+        this.weightData = ""
+        this.numberData = ""
+        this.setData = ""
       }
     },
     deleteTodo(i) {
       if (confirm("本当に削除してよろしいですか？")) {
-        this.cards.splice(i, 1)
+        this.todos.splice(i, 1)
       }
+    },
+    saveTodo() {
+      // firebase.initializeApp()
+      firebase.firestore().collection("users").add({
+        text: "保存できた",
+      })
     },
   },
 }

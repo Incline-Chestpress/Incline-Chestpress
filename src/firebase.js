@@ -4,9 +4,14 @@ import "firebase/firestore"
 import "firebase/auth"
 
 const firebaseConfig = {
-  // ...
+  apiKey: "AIzaSyAVfr9fEtbManRw1XJxSnKQkf616hiUbVQ",
+  authDomain: "incline-chestpress.firebaseapp.com",
+  projectId: "incline-chestpress",
+  storageBucket: "incline-chestpress.appspot.com",
+  messagingSenderId: "737374460847",
+  appId: "1:737374460847:web:6b85fccf26b377c84b2d5a",
+  measurementId: "G-K32RKEGHNB",
 }
-
 firebase.initializeApp(firebaseConfig)
 
 /**
@@ -43,14 +48,4 @@ firebase.auth().onAuthStateChanged((user) => {
 })
 Vue.prototype.$auth = $auth
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAVfr9fEtbManRw1XJxSnKQkf616hiUbVQ",
-  authDomain: "incline-chestpress.firebaseapp.com",
-  projectId: "incline-chestpress",
-  storageBucket: "incline-chestpress.appspot.com",
-  messagingSenderId: "737374460847",
-  appId: "1:737374460847:web:6b85fccf26b377c84b2d5a",
-  measurementId: "G-K32RKEGHNB",
-}
-
-firebase.initializeApp(firebaseConfig)
+// firebase.initializeApp(firebaseConfig)

@@ -5,23 +5,24 @@
       <router-link to="/status">Status</router-link>
     </div>
     <router-view />
+    <TodoBox></TodoBox>
   </div>
 </template>
 ./views/Status.vue ./views/Status.vue
 
 <script>
-import { defineComponent } from "@vue/composition-api"
-import Aside from "@/components/Aside.vue"
-import Calendar from "@/components/Calendar.vue"
+// import { defineComponent } from "@vue/composition-api"
+// import Aside from "@/components/Aside.vue"
+// import Calendar from "@/components/Calendar.vue"
 import TodoBox from "@/components/TodoBox.vue"
-import TopBar from "@/components/TopBar.vue"
+// import TopBar from "@/components/TopBar.vue"
 
 export default {
   components: {
-    Aside,
-    Calendar,
+    //   Aside,
+    //   Calendar,
     TodoBox,
-    TopBar,
+    //   TopBar,
   },
 }
 </script>
