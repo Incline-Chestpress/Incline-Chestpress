@@ -9,12 +9,12 @@
         <h3>Set</h3>
       </div>
       <table class="card-container">
-        <tr class="todo-card" v-for="(card, i) in cards" v-bind:key="i">
+        <tr class="todo-card" v-for="(todo, i) in todos" v-bind:key="i">
           <!-- <td>{{ i }}</td> -->
-          <td class="cards" id="task-catd">{{ card.tasks }}</td>
-          <td class="cards" id="weight-catd">{{ weight.tasks }}kg</td>
-          <td class="cards" id="number-catd">{{ card.numbers }}</td>
-          <td class="cards" id="set-catd">{{ card.sets }}</td>
+          <td class="cards" id="task-catd">{{ todo.tasks }}</td>
+          <td class="cards" id="weight-catd">{{ todo.weights }}kg</td>
+          <td class="cards" id="number-catd">{{ todo.numbers }}</td>
+          <td class="cards" id="set-catd">{{ todo.sets }}</td>
           <td id="delete-button" v-on:click="deleteTodo(i)">
             <img
               src="@/img/DeleteButton.png"
@@ -87,7 +87,7 @@ export default {
         let weight = { item: this.weightData }
         let number = { item: this.numberData }
         let set = { item: this.setData }
-        this.cards.push({
+        this.todos.push({
           tasks: task.item,
           weights: weight.item,
           numbers: number.item,

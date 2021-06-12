@@ -11,8 +11,19 @@
 
 <script>
 import { defineComponent } from "@vue/composition-api"
+import Aside from "@/components/Aside.vue"
+import Calendar from "@/components/Calendar.vue"
+import TodoBox from "@/components/TodoBox.vue"
+import TopBar from "@/components/TopBar.vue"
 
-export default {}
+export default {
+  components: {
+    Aside,
+    Calendar,
+    TodoBox,
+    TopBar,
+  },
+}
 </script>
 
 <style>
