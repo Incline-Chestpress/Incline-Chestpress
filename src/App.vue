@@ -1,19 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    7
+    <div id="nav">
+      <router-link to="/status">Status</router-link>
+    </div>
+    <router-view />
+    <TodoBox></TodoBox>
   </div>
 </template>
+./views/Status.vue ./views/Status.vue
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+// import { defineComponent } from "@vue/composition-api"
+// import Aside from "@/components/Aside.vue"
+// import Calendar from "@/components/Calendar.vue"
+import TodoBox from "@/components/TodoBox.vue"
+// import TopBar from "@/components/TopBar.vue"
 
 export default {
-  name: "App",
   components: {
-    HelloWorld,
+    //   Aside,
+    //   Calendar,
+    TodoBox,
+    //   TopBar,
   },
-};
+}
 </script>
 
 <style>
@@ -23,6 +34,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
