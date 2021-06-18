@@ -1,8 +1,12 @@
 <template>
   <div id="app">
-    7
+    Training day
     <div id="nav">
-      <router-link to="/status">Status</router-link>
+      <ul>
+        <li><router-link to="/status" class="status">Status</router-link></li>
+        <li><router-link to="/top" class="top">Top</router-link></li>
+        <li><router-link to="/top" class="Setting">Setting</router-link></li>
+      </ul>
     </div>
     <router-view />
     <TodoBox></TodoBox>
@@ -31,11 +35,11 @@ export default {
     }
   },
   computed: {
-    lineTest: () {
+    lineTest: () => {
       setTimeout(() => {
         console.log(this.message)
       }, new Date().setHours(22, 7, 0, 0) - new Date()) // 13時30分に実行
-      return(this.message)
+      return this.message
     },
   },
 }
@@ -47,19 +51,55 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #000000;
+  /* 背景画像 */
+  background-image: url("./assets/main.jpg");
+  background-position: center;
+  background-size: cover;
 }
-
 #nav {
   padding: 30px;
 }
-
+/* ポジションfixed */
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #979797;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #bdbdbd;
+}
+ul {
+  width: 200px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  background-color: #000000;
+}
+li a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #000000;
+}
+li {
+  text-align: center;
+}
+li:last-child {
+  border-bottom: none;
+}
+li a.active {
+  color: #ffffff;
+  background-color: #da3c41;
+}
+/* マウスオーバー */
+li a:hover:not(.active) {
+  color: #ffffff;
+  background-color: #bebebe;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
 }
 </style>
