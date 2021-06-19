@@ -1,29 +1,51 @@
 <template>
   <div id="app">
-    7
     <div id="nav">
-      <router-link to="/status">Status</router-link>
+      <button v-on:click="signIn">サインイン</button>
+      <button v-on:click="signOut">サインアウト</button>
     </div>
+    <router-link to="/MyPage"> MyPage </router-link>
     <router-view />
-    <TodoBox></TodoBox>
   </div>
 </template>
-./views/Status.vue ./views/Status.vue
+./views/Status.vue
 
 <script>
-// import { defineComponent } from "@vue/composition-api"
 // import Aside from "@/components/Aside.vue"
 // import Calendar from "@/components/Calendar.vue"
-import TodoBox from "@/components/TodoBox.vue"
 // import TopBar from "@/components/TopBar.vue"
+import firebase from "firebase"
+// import myPage from "@/views/MyPage.vue"
 
 export default {
-  components: {
-    //   Aside,
-    //   Calendar,
-    TodoBox,
-    //   TopBar,
+  data() {
+    return {
+      user: null,
+    }
   },
+  components: {
+    // myPage,
+  },
+  methods: {
+    signIn() {
+      const provider = new firebase.auth.GoogleAuthProvider()
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then((user) => {
+          this.user = user
+        })
+    },
+    signOut() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.user = null
+        })
+    },
+  },
+  // mounted() {},
 }
 </script>
 
