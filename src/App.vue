@@ -1,10 +1,5 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <button v-on:click="signIn">サインイン</button>
-      <button v-on:click="signOut">サインアウト</button>
-    </div>
-    <router-link to="/MyPage"> MyPage </router-link>
+  <div>
     <router-view />
   </div>
 </template>
@@ -14,8 +9,9 @@
 // import Aside from "@/components/Aside.vue"
 // import Calendar from "@/components/Calendar.vue"
 // import TopBar from "@/components/TopBar.vue"
-import firebase from "firebase"
+// import firebase from "firebase"
 // import myPage from "@/views/MyPage.vue"
+// import home from "@/views/Home.vue"
 
 export default {
   data() {
@@ -25,25 +21,7 @@ export default {
   },
   components: {
     // myPage,
-  },
-  methods: {
-    signIn() {
-      const provider = new firebase.auth.GoogleAuthProvider()
-      firebase
-        .auth()
-        .signInWithPopup(provider)
-        .then((user) => {
-          this.user = user
-        })
-    },
-    signOut() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          this.user = null
-        })
-    },
+    // home,
   },
   // mounted() {},
 }
