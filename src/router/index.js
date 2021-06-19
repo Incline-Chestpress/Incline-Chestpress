@@ -10,6 +10,7 @@ import firebase from "firebase"
 Vue.use(VueRouter)
 
 const routes = [
+  {
     path: "/home",
     name: "home",
     component: home,
