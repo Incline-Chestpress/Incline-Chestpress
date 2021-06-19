@@ -1,37 +1,27 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
-// import BeforeSignIn from "@/views/BeforeSignIn.vue"
-// import AfterSignIn from "@/views/AfterSignIn.vue"
-import Status from "@/views/Status.vue"
-import MyPage from "@/views/MyPage.vue"
+import app from "@/App.vue"
+import status from "@/views/Status.vue"
+import myPage from "@/views/MyPage.vue"
 import firebase from "firebase"
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: "/",
-    redirect: "/BeforeSignIn",
+    path: "/app",
+    name: "app",
+    component: app,
   },
-  // {
-  //   path: "/BeforeSignIn",
-  //   name: "BeforeSignIn",
-  //   component: BeforeSignIn,
-  // },
-  // {
-  //   path: "/AfterSignIn",
-  //   name: "AfterSignIn",
-  //   component: AfterSignIn,
-  // },
   {
     path: "/status",
     name: "Status",
-    component: Status,
+    component: status,
   },
   {
     path: "/MyPage",
     name: "Mypage",
-    component: MyPage,
+    component: myPage,
   },
 ]
 
@@ -43,16 +33,21 @@ const router = new VueRouter({
 
 // Vue Router のグローバルガードで、ログインしてない場合は、BeforeSignInにしか行けなくする。
 
-let isSignedIn = () => {
-  return firebase.auth().currentUser
-}
+export default router
+
+let isSignIn = false
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    isSignIn = true
+  } else {
+    isSignIn = false
+  }
+})
 
 router.beforeEach((to, from, next) => {
-  if (to.name !== "BeforeSignIn" && !isSignedIn()) {
-    next("/BeforeSignIn")
+  if (to.name !== "app" && !isSignIn) {
+    next({ name: "app" })
   } else {
     next()
   }
 })
-
-export default router
