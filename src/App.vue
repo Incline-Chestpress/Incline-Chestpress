@@ -23,6 +23,7 @@ import TodoBox from "@/components/TodoBox.vue"
 // const lineDisplay = document.getElementsByClassName("line-display")
 
 export default {
+  
   components: {
     //   Aside,
     //   Calendar,
@@ -31,6 +32,9 @@ export default {
   },
   data: function () {
     return {
+    
+      user: null,
+    
       message: "ラインてすと",
     }
   },
@@ -51,6 +55,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+
   color: #000000;
   /* 背景画像 */
   background-image: url("./assets/main.jpg");
