@@ -56,6 +56,8 @@ export default {
   background-image: url("./assets/main.jpg");
   background-position: center;
   background-size: cover;
+  width: 100%;
+  height: 100vh;
 }
 #nav {
   padding: 30px;
