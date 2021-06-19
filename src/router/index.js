@@ -1,26 +1,32 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
-import app from "@/App.vue"
+// import app from "@/App.vue"
 import status from "@/views/Status.vue"
 import myPage from "@/views/MyPage.vue"
+import home from "@/views/Home.vue"
 import firebase from "firebase"
 
 Vue.use(VueRouter)
 
 const routes = [
+  // {
+  //   path: "/app",
+  //   name: "app",
+  //   component: app,
+  // },
   {
-    path: "/app",
-    name: "app",
-    component: app,
+    path: "/home",
+    name: "home",
+    component: home,
   },
   {
     path: "/status",
-    name: "Status",
+    name: "status",
     component: status,
   },
   {
-    path: "/MyPage",
-    name: "Mypage",
+    path: "/myPage",
+    name: "myPage",
     component: myPage,
   },
 ]
@@ -45,8 +51,8 @@ firebase.auth().onAuthStateChanged((user) => {
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.name !== "app" && !isSignIn) {
-    next({ name: "app" })
+  if (to.name !== "home" && !isSignIn) {
+    next({ name: "home" })
   } else {
     next()
   }
