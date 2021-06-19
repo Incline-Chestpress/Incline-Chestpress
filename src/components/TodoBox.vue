@@ -116,7 +116,6 @@ export default {
       // firebase.initializeApp()
       firebase.firestore().collection("users").add({
         todos: this.todos,
-        // text: "保存できた",
       })
     },
   },

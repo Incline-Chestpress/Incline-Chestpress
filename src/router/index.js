@@ -1,5 +1,6 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
+
 // import app from "@/App.vue"
 import status from "@/views/Status.vue"
 import myPage from "@/views/MyPage.vue"
@@ -9,12 +10,6 @@ import firebase from "firebase"
 Vue.use(VueRouter)
 
 const routes = [
-  // {
-  //   path: "/app",
-  //   name: "app",
-  //   component: app,
-  // },
-  {
     path: "/home",
     name: "home",
     component: home,
