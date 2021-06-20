@@ -78,10 +78,10 @@ export default {
 
   methods: {
     addData() {
-      let adddata = this.inputValue
-      this.datasets[0].data.push(adddata)
+      let adddata = Number(this.inputValue)
+      this.chartItems.datasets[0].data.push(adddata)
       this.inputValue = ""
-      return this.datasets.data
+      // return this.datasets.data
     },
   },
 }
