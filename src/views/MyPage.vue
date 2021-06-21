@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="my-page">
     <TopBar />
     <Aside />
     <TodoBox />
@@ -18,3 +18,14 @@ export default {
   },
 }
 </script>
+<style scoped>
+.my-page {
+  background-color: rgba(255, 255, 255, 0.2);
+  background-blend-mode: lighten;
+  background-image: url("../assets/main.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+</style>
