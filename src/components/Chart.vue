@@ -4,7 +4,7 @@
     <button v-on:click="addData">追加</button>
 
     <p>{{ inputValue }}</p>
-    <Chart :chartData="chartItems" :options="chartOptions" />
+    <Chart :chart-data="chartData" :options="chartOptions" />
   </div>
 </template>
 
@@ -18,31 +18,7 @@ export default {
   data() {
     return {
       inputValue: "",
-      chartItems: {
-        labels: [
-          "12月",
-          "1月",
-          "2月",
-          "3月",
-          "4月",
-          "5月",
-          "6月",
-          "7月",
-          "8月",
-          "9月",
-          "10月",
-          "11月",
-        ],
-        datasets: [
-          {
-            label: "月ごとの点数",
-            data: [2, 2, 2, 2, 4, 5, 6, 7],
-            backgroundColor: "lightblue",
-            tension: 0,
-            fill: false,
-          },
-        ],
-      },
+      data: [2, 2, 2, 2, 4, 5, 6, 7],
       // 後程オプションを記述
 
       chartOptions: {
@@ -78,10 +54,39 @@ export default {
 
   methods: {
     addData() {
-      let adddata = Number(this.inputValue)
-      this.chartItems.datasets[0].data.push(adddata)
+      const addData = +this.inputValue
+      this.data.push(addData)
       this.inputValue = ""
-      // return this.datasets.data
+    },
+  },
+  computed: {
+    chartData() {
+      const data = {
+        labels: [
+          "12月",
+          "1月",
+          "2月",
+          "3月",
+          "4月",
+          "5月",
+          "6月",
+          "7月",
+          "8月",
+          "9月",
+          "10月",
+          "11月",
+        ],
+        datasets: [
+          {
+            label: "月ごとの点数",
+            data: this.data,
+            backgroundColor: "lightblue",
+            tension: 0,
+            fill: false,
+          },
+        ],
+      }
+      return data
     },
   },
 }
