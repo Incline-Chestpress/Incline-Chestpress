@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import firebase from "firebase"
 import Chart from "@/components/ChartBox.js"
 
 export default {
@@ -55,9 +56,39 @@ export default {
   methods: {
     addData() {
       const addData = +this.inputValue
+      const now = new Date()
+      const year = now.getFullYear()
+      const month = now.getMonth() + 1
+      const day = now.getDate()
+      const hour = now.getHours()
+      const minute = now.getMinutes()
+      const date = year + "/" + month + "/" + day + " " + hour + ":" + minute
+
       this.data.push(addData)
       this.inputValue = ""
+      firebase.firestore().collection("weights").add({
+        weight: this.data,
+        time: date,
+      })
     },
+  },
+  created() {
+    firebase
+      .firestore()
+      .collection("weights")
+      .orderBy("time", "desc")
+      .limit(1)
+      .get()
+      .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          this.data.replace({
+            // id: doc.id,
+            ...doc.data(),
+          }),
+            console.log(this.data)
+          // this.data = doc.data()
+        })
+      })
   },
   computed: {
     chartData() {
