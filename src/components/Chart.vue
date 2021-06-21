@@ -54,16 +54,22 @@ export default {
   },
 
   methods: {
+    toDoubleDigits(num) {
+      num += ""
+      if (num.length === 1) {
+        num = "0" + num
+      }
+      return num
+    },
     addData() {
       const addData = +this.inputValue
       const now = new Date()
       const year = now.getFullYear()
-      const month = now.getMonth() + 1
-      const day = now.getDate()
-      const hour = now.getHours()
-      const minute = now.getMinutes()
+      const month = this.toDoubleDigits(now.getMonth() + 1)
+      const day = this.toDoubleDigits(now.getDate())
+      const hour = this.toDoubleDigits(now.getHours())
+      const minute = this.toDoubleDigits(now.getMinutes())
       const date = year + "/" + month + "/" + day + " " + hour + ":" + minute
-
       this.data.push(addData)
       this.inputValue = ""
       firebase.firestore().collection("weights").add({
@@ -81,12 +87,12 @@ export default {
       .get()
       .then((snapshot) => {
         snapshot.docs.forEach((doc) => {
-          this.data.replace({
-            // id: doc.id,
-            ...doc.data(),
-          }),
-            console.log(this.data)
-          // this.data = doc.data()
+          // this.data.replace({
+          //   // id: doc.id,
+          //   ...doc.data(),
+          // }),
+          this.data = doc.data().weight
+          console.log(doc.data()), console.log(this.data)
         })
       })
   },
