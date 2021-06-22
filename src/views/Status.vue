@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Chart />
     <!-- <TopBar />
     <Aside /> -->
   </div>
@@ -7,10 +8,12 @@
 <script>
 // import TopBar from "@/components/TopBar.vue"
 // import Aside from "@/components/Aside.vue"
+import Chart from "@/components/Chart.vue"
 export default {
   components: {
     // Aside,
-    // TopBar,
-  },
+    // TopBar,    
+    Chart,
+     },
 }
 </script>
