@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="status">
     <Chart />
     <!-- <TopBar />
     <Aside /> -->
@@ -17,3 +17,9 @@ export default {
      },
 }
 </script>
+
+<style scoped>
+#status {
+  margin-left: 200px;
+}
+</style>
