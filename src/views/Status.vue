@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="status">
     <Chart />
   </div>
 </template>
@@ -12,3 +12,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+#status {
+  margin-left: 200px;
+}
+</style>
