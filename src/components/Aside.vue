@@ -1,21 +1,62 @@
 <template>
-  <div>
-    <nav>
-      <ul>
-        <li><router-link to="/myPage" class="top">Top</router-link></li>
-        <li><router-link to="/status" class="status">Status</router-link></li>
-        <li><router-link to="/myPage" class="Setting">Setting</router-link></li>
-      </ul>
-    </nav>
+  <div class="aside">
+    <link
+      href="https://fonts.googleapis.com/css?family=Acme"
+      rel="stylesheet"
+    />
+    <ul class="menu">
+      <li><router-link to="/myPage" class="link top">Top</router-link></li>
+      <li>
+        <router-link to="/status" class="link status">Status</router-link>
+      </li>
+      <li>
+        <router-link to="/line" class="link line-setting"
+          >Line Setting</router-link
+        >
+      </li>
+    </ul>
   </div>
 </template>
 
 <style>
-#nav {
-  padding: 30px;
+.aside {
+  font-family: acme;
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 180px;
+  height: 100%;
+  background: black;
+  font-size: 18px;
+  /* color: white; */
 }
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: auto;
+  margin-top: 80px;
+}
+.menu li {
+  /* margin-bottom: 50px; */
+  padding: 20px 0;
+  transition: 1s;
+}
+.menu li:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+.link {
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+/* #nav {
+  padding: 30px;
+} */
 /* ポジションfixed */
-#nav a {
+/* #nav a {
   font-weight: bold;
   color: #979797;
 }
@@ -46,10 +87,10 @@ li:last-child {
 li a.active {
   color: #ffffff;
   background-color: #da3c41;
-}
+} */
 /* マウスオーバー */
-li a:hover:not(.active) {
+/* li a:hover:not(.active) {
   color: #ffffff;
   background-color: #bebebe;
-}
+} */
 </style>
