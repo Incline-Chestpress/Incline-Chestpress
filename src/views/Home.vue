@@ -4,7 +4,7 @@
       href="https://fonts.googleapis.com/css?family=Acme"
       rel="stylesheet"
     />
-    <TopBar />
+    <!-- <TopBar /> -->
     <div class="to-my-page">
       <router-link to="/myPage"> MyPage </router-link>
     </div>
@@ -12,11 +12,11 @@
 </template>
 <script>
 // import { defineComponent } from "@vue/composition-api"
-import TopBar from "@/components/TopBar.vue"
+// import TopBar from "@/components/TopBar.vue"
 
 export default {
   components: {
-    TopBar,
+    // TopBar,
   },
 }
 </script>

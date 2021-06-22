@@ -1,22 +1,26 @@
 <template>
-  <router-view />
+  <div>
+    <Top-Bar />
+    <Aside />
+    <router-view />
+  </div>
 </template>
 ./views/Status.vue
 
 <script>
 // import { defineComponent } from "@vue/composition-api"
-// import Aside from "@/components/Aside.vue"
+import Aside from "@/components/Aside.vue"
 // import Calendar from "@/components/Calendar.vue"
 // import TodoBox from "@/components/TodoBox.vue"
-// import TopBar from "@/components/TopBar.vue"
+import TopBar from "@/components/TopBar.vue"
 // const lineDisplay = document.getElementsByClassName("line-display")
 
 export default {
   components: {
-    //   Aside,
+    Aside,
     //   Calendar,
     // TodoBox,
-    //   TopBar,
+    TopBar,
   },
   data: function () {
     return {

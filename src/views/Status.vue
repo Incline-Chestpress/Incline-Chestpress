@@ -1,16 +1,16 @@
 <template>
   <div>
-    <TopBar />
-    <Aside />
+    <!-- <TopBar />
+    <Aside /> -->
   </div>
 </template>
 <script>
-import TopBar from "@/components/TopBar.vue"
-import Aside from "@/components/Aside.vue"
+// import TopBar from "@/components/TopBar.vue"
+// import Aside from "@/components/Aside.vue"
 export default {
   components: {
-    Aside,
-    TopBar,
+    // Aside,
+    // TopBar,
   },
 }
 </script>

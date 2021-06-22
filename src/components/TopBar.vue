@@ -52,7 +52,10 @@ export default {
   height: 50px;
   opacity: 0.6;
   font-family: acme;
+  /* position: fixed;
+  top: 0; */
 }
+
 .header h2 {
   text-align: center;
   margin: 0;

@@ -1,20 +1,18 @@
 <template>
   <div class="my-page">
-    <TopBar />
-    <Aside />
     <TodoBox />
   </div>
 </template>
 <script>
-import TopBar from "@/components/TopBar.vue"
+// import TopBar from "@/components/TopBar.vue"
 import TodoBox from "@/components/TodoBox.vue"
-import Aside from "@/components/Aside.vue"
+// import Aside from "@/components/Aside.vue"
 
 export default {
   components: {
     TodoBox,
-    Aside,
-    TopBar,
+    // Aside,
+    // TopBar,
   },
 }
 </script>
@@ -27,5 +25,7 @@ export default {
   background-size: cover;
   width: 100%;
   height: 100vh;
+  padding-top: 20px;
+  /* margin-top: 50px; */
 }
 </style>

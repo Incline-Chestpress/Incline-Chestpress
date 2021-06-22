@@ -11,7 +11,7 @@
         <h3 class="heading weight">Weight</h3>
         <h3 class="heading number">Number of Time</h3>
         <h3 class="heading set">Set</h3> -->
-        <button id="save-button" v-on:click="saveTodo">Done</button>
+        <!-- <button id="save-button" v-on:click="saveTodo">Done</button> -->
       </div>
       <table class="card-container">
         <tr id="heading">
@@ -135,12 +135,13 @@ export default {
 <style scoped>
 #todo-box {
   font-family: acme;
+  /* margin-top: 20px; */
 }
 .box {
   width: 500px;
   height: 600px;
   border: 2px black solid;
-  margin: 20px auto 0;
+  margin: 0 auto 0;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.8);
 }
