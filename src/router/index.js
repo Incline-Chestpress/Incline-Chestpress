@@ -5,6 +5,7 @@ import VueRouter from "vue-router"
 import status from "@/views/Status.vue"
 import myPage from "@/views/MyPage.vue"
 import home from "@/views/Home.vue"
+import line from "@/views/Line.vue"
 import firebase from "firebase"
 
 Vue.use(VueRouter)
@@ -24,6 +25,11 @@ const routes = [
     path: "/myPage",
     name: "myPage",
     component: myPage,
+  },
+  {
+    path: "/line",
+    name: "line",
+    component: line,
   },
 ]
 
