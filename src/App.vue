@@ -23,7 +23,6 @@ import TodoBox from "@/components/TodoBox.vue"
 // const lineDisplay = document.getElementsByClassName("line-display")
 
 export default {
-  
   components: {
     //   Aside,
     //   Calendar,
@@ -32,9 +31,7 @@ export default {
   },
   data: function () {
     return {
-    
       user: null,
-    
       message: "ラインてすと",
     }
   },
