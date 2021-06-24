@@ -1,20 +1,31 @@
 <template>
-  <div>
+  <div id="todo-box">
+    <link
+      href="https://fonts.googleapis.com/css?family=Acme"
+      rel="stylesheet"
+    />
     <div class="box">
+      <h2>Todo Box</h2>
       <div class="box-head">
-        <h3>Task</h3>
-        <h3>Weight</h3>
-        <h3>Number of Time</h3>
-        <h3>Set</h3>
-        <button id="save-button" v-on:click="saveTodo">Done</button>
+        <!-- <h3 class="heading task">Task</h3>
+        <h3 class="heading weight">Weight</h3>
+        <h3 class="heading number">Number of Time</h3>
+        <h3 class="heading set">Set</h3> -->
+        <!-- <button id="save-button" v-on:click="saveTodo">Done</button> -->
       </div>
       <table class="card-container">
+        <tr id="heading">
+          <th class="headings task">Task</th>
+          <th class="headings weight">Weight</th>
+          <th class="headings number">Number of Time</th>
+          <th class="headings set">Set</th>
+        </tr>
         <tr class="todo-card" v-for="(todo, i) in todos" v-bind:key="i">
           <!-- <td>{{ i }}</td> -->
-          <td class="todos" id="task-catd">{{ todo.tasks }}</td>
-          <td class="todos" id="weight-catd">{{ todo.weights }}kg</td>
-          <td class="todos" id="number-catd">{{ todo.numbers }}</td>
-          <td class="todos" id="set-catd">{{ todo.sets }}</td>
+          <td class="todos task">{{ todo.tasks }}</td>
+          <td class="todos weight">{{ todo.weights }}kg</td>
+          <td class="todos number">{{ todo.numbers }}</td>
+          <td class="todos set">{{ todo.sets }}</td>
           <td id="delete-button" v-on:click="deleteTodo(i)">
             <img
               src="@/components/img/DeleteButton.png"
@@ -121,3 +132,139 @@ export default {
   },
 }
 </script>
+<style scoped>
+#todo-box {
+  font-family: acme;
+  /* margin-top: 20px; */
+}
+.box {
+  width: 500px;
+  height: 600px;
+  border: 2px black solid;
+  margin: 0 auto 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.8);
+}
+.box h2 {
+  text-align: center;
+}
+.card-container {
+  padding: 0;
+  margin: 0;
+}
+#save-button {
+  position: fixed;
+  top: 97px;
+  right: 550px;
+  width: 50px;
+  height: auto;
+  border: 2px black solid;
+  border-radius: 6px;
+  background: black;
+  color: white;
+}
+#save-button:hover {
+  cursor: pointer;
+}
+#heading {
+  width: 420px;
+  height: 50px;
+}
+.headings {
+  text-align: center;
+}
+.todos {
+  text-align: center;
+  line-height: 40px;
+}
+.task {
+  width: 120px;
+}
+.number {
+  width: 120px;
+}
+.weight {
+  width: 120px;
+}
+.set {
+  width: 90px;
+}
+.todo-card {
+  width: 420px;
+  display: flex;
+  /* justify-content: start; */
+  border: 2px black solid;
+  border-radius: 9px;
+  height: 40px;
+  margin: 1px 1px;
+  /* width: 95%; */
+}
+.task-card {
+  width: 120px;
+  line-height: 40px;
+}
+.weight-card {
+  width: 120px;
+  line-height: 40px;
+}
+.number-card {
+  width: 120px;
+  line-height: 40px;
+}
+.set-card {
+  width: 90px;
+  /* margin-left: 15px; */
+  line-height: 40px;
+}
+.delete-button {
+  height: 40px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 10px;
+}
+.delete-button:hover {
+  cursor: pointer;
+}
+.item-container {
+  width: 500px;
+  border: 2px black solid;
+  padding: 5px;
+  margin: 20px auto 0;
+  border-radius: 5px;
+}
+.task-td {
+  width: 40%;
+  border: 2px black solid;
+}
+.weight-td {
+  border: 2px black solid;
+  width: 18%;
+}
+.time-td {
+  border: 2px black solid;
+  width: 18%;
+}
+.set-td {
+  border: 2px black solid;
+  width: 18%;
+}
+.add-td {
+  width: 6%;
+}
+td input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  padding: 0;
+}
+.add-button {
+  width: 30px;
+  height: 30px;
+}
+.add-button:hover {
+  cursor: pointer;
+}
+.unvisible {
+  opacity: 0;
+}
+</style>
