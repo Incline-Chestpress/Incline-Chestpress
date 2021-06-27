@@ -169,6 +169,7 @@ export default {
 #heading {
   width: 420px;
   height: 50px;
+  display: flex;
 }
 .headings {
   text-align: center;
