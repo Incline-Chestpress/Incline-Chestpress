@@ -5,7 +5,7 @@
     <div class="sign_input">
       <input type="email" class="sign" v-model="lineId" placeholder="LINE ID" />
     </div>
-    <div class="sign_button" v-on:click="signUp">LINE登録</div>
+    <button class="sign_button" v-on:click="signUp">LINE登録</button>
   </div>
 </template>
 
@@ -52,14 +52,19 @@ export default {
   /* max-width: 400px;
   min-width: 300px; */
   text-align: center;
-  /* 背景画像 */
+  background-color: rgba(255, 255, 255, 0.2);
+  background-blend-mode: lighten;
   background-image: url("../assets/main.jpg");
+  background-position: center;
+  background-size: cover;
   width: 100%;
   height: 100vh;
 }
 /* タイトル */
 .sign_title {
-  color: white;
+  padding-top: 30px;
+  color: #383838;
+  font-weight: bold;
 }
 .sign_input {
   display: flex;
@@ -68,13 +73,11 @@ export default {
 .sign {
   width: 50%;
   height: 25px;
-  font-weight: bold;
-  font-size: 15.5px;
+  font-size: 15px;
   line-height: 22px;
   border: 0.5px solid #f2e9e3;
   border-radius: 5px;
   align-items: center;
-  text-align: center;
   margin: 10px auto;
 }
 /* LINE登録ボタン */
@@ -83,10 +86,14 @@ export default {
   box-sizing: border-box;
   border-radius: 10px;
   background-color: #52e01a;
-  width: 75px;
+  width: 100px;
   height: 30px;
   margin: 5px auto;
   display: flex;
   font-weight: bold;
+  text-align: center;
+  align-items: center;
+  color: white;
+  text-align: center;
 }
 </style>
