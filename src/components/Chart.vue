@@ -19,7 +19,9 @@ export default {
   data() {
     return {
       inputValue: "",
-      data: [{ time: "", weight: 0 }],
+      data: {
+        dataArray: [{ time: "", weight: 0 }],
+      },
       timeLabel: [],
       weights: [],
       // 後程オプションを記述
@@ -72,19 +74,19 @@ export default {
       const hour = this.toDoubleDigits(now.getHours())
       const minute = this.toDoubleDigits(now.getMinutes())
       const date = year + "/" + month + "/" + day + " " + hour + ":" + minute
-      this.data.push({ time: date, weight: addData })
+      this.data.dataArray.push({ time: date, weight: addData })
       this.inputValue = ""
       firebase.firestore().collection("weights").add(this.data)
     },
     timeLabelset() {
       for (let i = 0; i < this.data.length; i++) {
-        let time = this.data[i].time
+        let time = this.data.dataArray[i].time
         this.timeLabel.push(time)
       }
     },
     weightsset() {
       for (let i = 0; i < this.data.length; i++) {
-        let weight = this.data[i].weight
+        let weight = this.data.dataArray[i].weight
         this.weights.push(weight)
       }
     },
@@ -102,9 +104,11 @@ export default {
           //   // id: doc.id,
           //   ...doc.data(),
           // }),
-          this.data = [doc.data()]
-          console.log(doc.data())
-          console.log(this.data)
+          // this.data = [doc.data()]
+          // console.log(doc.data())
+          // console.log(this.data)
+          console.log("Hello")
+          console.log(doc)
         })
       }),
       this.timeLabelset(),
