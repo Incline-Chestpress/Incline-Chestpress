@@ -76,16 +76,16 @@ export default {
       const date = year + "/" + month + "/" + day + " " + hour + ":" + minute
       this.data.dataArray.push({ time: date, weight: addData })
       this.inputValue = ""
-      firebase.firestore().collection("weights").add(this.data)
+      firebase.firestore().collection("weights").doc("sample").set(this.data)
     },
     timeLabelset() {
-      for (let i = 0; i < this.data.length; i++) {
+      for (let i = 0; i < this.data.dataArray.length; i++) {
         let time = this.data.dataArray[i].time
         this.timeLabel.push(time)
       }
     },
     weightsset() {
-      for (let i = 0; i < this.data.length; i++) {
+      for (let i = 0; i < this.data.dataArray.length; i++) {
         let weight = this.data.dataArray[i].weight
         this.weights.push(weight)
       }
@@ -95,21 +95,25 @@ export default {
     await firebase
       .firestore()
       .collection("weights")
-      .orderBy("time", "desc")
+      .doc("sample")
+      // .orderBy("time", "desc")
       // .limit(1)
       .get()
-      .then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
-          // this.data.replace({
-          //   // id: doc.id,
-          //   ...doc.data(),
-          // }),
-          // this.data = [doc.data()]
-          // console.log(doc.data())
-          // console.log(this.data)
-          console.log("Hello")
-          console.log(doc)
-        })
+      .then((doc) => {
+        // this.data.replace({
+        //   // id: doc.id,
+        //   ...doc.data(),
+        // }),
+        // this.data = [doc.data()]
+        // console.log(doc.data())
+        // console.log(this.data)
+        if (doc.exists) {
+          this.data = doc.data()
+          console.log("Document data:", doc.data())
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!")
+        }
       }),
       this.timeLabelset(),
       this.weightsset()
