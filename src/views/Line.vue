@@ -3,7 +3,7 @@
     <!-- LINE送信希望者のIDを習得 -->
     <div class="sign_title">毎朝9:00にトレーニングメニューが届きます</div>
     <div class="sign_input">
-      <input type="email" class="sign" v-model="lineID" placeholder="lINE ID" />
+      <input type="email" class="sign" v-model="lineId" placeholder="LINE ID" />
     </div>
     <div class="sign_button" v-on:click="signUp">LINE登録</div>
   </div>
@@ -11,47 +11,35 @@
 
 <script>
 import firebase from "firebase"
-import line from "@/components/index.js"
-// プロップス（親から子に渡す）を書く
+// import line from "@/components/index.js"
 
 export default {
   data() {
     return {
+      uid: "",
       lineId: "",
     }
   },
   methods: {
     // firebaseにLINE iDを登録する
-    // これドキュメントの追加でLINEidとユーザーid結びつければいい？
+    // ドキュメントにLINEid追加、ユーザーidと結びつける
     signUp() {
       if (this.lineId != this.lineId) {
         alert("LINE IDを入力してください")
         return
       }
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          this.uid = user.uid
+        } else {
+          // this.uid = Number(this.length)
+        }
+      })
       firebase.firestore().collection("lineid").add({
-        this.lineId: ""
-      });
-    }
-      // firebase.auth().then((res) => {
-      //   console.log(res)
-      //   const lineInfo = {
-      //     line_id: this.lineId,
-      //   }
-      //   this.$router.push("/")
-      //   firebase.firestore().collection("line").add(lineInfo)
-      // })
-      //         .catch(function(error) {
-      //   // Handle Errors here.
-      //   const errorCode = error.code;
-      //   const errorMessage = error.message;
-      //   // ...
-      //   alert(
-      //     "ログインに失敗しました エラーコード" +
-      //       errorCode +
-      //       "エラーメッセージ" +
-      //       errorMessage
-      //   );
-      // });
+        uid: this.uid,
+        lineId: this.lineId,
+      })
+      alert("LINE登録が完了しました")
     },
   },
 }
@@ -60,12 +48,14 @@ export default {
 <style>
 .SignUp {
   margin: auto;
-  width: 85%;
-  max-width: 400px;
-  min-width: 300px;
+  /* width: 85%; */
+  /* max-width: 400px;
+  min-width: 300px; */
   text-align: center;
   /* 背景画像 */
   background-image: url("../assets/main.jpg");
+  width: 100%;
+  height: 100vh;
 }
 /* タイトル */
 .sign_title {
@@ -76,7 +66,7 @@ export default {
 }
 /* LINE IDインプット */
 .sign {
-  width: 70%;
+  width: 50%;
   height: 25px;
   font-weight: bold;
   font-size: 15.5px;
