@@ -19,7 +19,9 @@ export default {
   data() {
     return {
       inputValue: "",
-      data: [2, 2, 2, 2, 4, 5, 6, 7],
+      data: [{ time: "", weight: 0 }],
+      timeLabel: [],
+      weights: [],
       // 後程オプションを記述
 
       chartOptions: {
@@ -70,20 +72,29 @@ export default {
       const hour = this.toDoubleDigits(now.getHours())
       const minute = this.toDoubleDigits(now.getMinutes())
       const date = year + "/" + month + "/" + day + " " + hour + ":" + minute
-      this.data.push(addData)
+      this.data.push({ time: date, weight: addData })
       this.inputValue = ""
-      firebase.firestore().collection("weights").add({
-        weight: this.data,
-        time: date,
-      })
+      firebase.firestore().collection("weights").add(this.data)
+    },
+    timeLabelset() {
+      for (let i = 0; i < this.data.length; i++) {
+        let time = this.data[i].time
+        this.timeLabel.push(time)
+      }
+    },
+    weightsset() {
+      for (let i = 0; i < this.data.length; i++) {
+        let weight = this.data[i].weight
+        this.weights.push(weight)
+      }
     },
   },
-  created() {
-    firebase
+  async created() {
+    await firebase
       .firestore()
       .collection("weights")
       .orderBy("time", "desc")
-      .limit(1)
+      // .limit(1)
       .get()
       .then((snapshot) => {
         snapshot.docs.forEach((doc) => {
@@ -91,32 +102,24 @@ export default {
           //   // id: doc.id,
           //   ...doc.data(),
           // }),
-          this.data = doc.data().weight
-          console.log(doc.data()), console.log(this.data)
+          this.data = [doc.data()]
+          console.log(doc.data())
+          console.log(this.data)
         })
-      })
+      }),
+      this.timeLabelset(),
+      this.weightsset()
   },
   computed: {
     chartData() {
+      // this.timeLabelset(),
+      // this.weightsset(),
       const data = {
-        labels: [
-          "12月",
-          "1月",
-          "2月",
-          "3月",
-          "4月",
-          "5月",
-          "6月",
-          "7月",
-          "8月",
-          "9月",
-          "10月",
-          "11月",
-        ],
+        labels: this.timeLabel,
         datasets: [
           {
             label: "月ごとの点数",
-            data: this.data,
+            data: this.weights,
             backgroundColor: "lightblue",
             tension: 0,
             fill: false,
