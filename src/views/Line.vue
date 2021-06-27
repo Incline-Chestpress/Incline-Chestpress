@@ -5,13 +5,14 @@
     <div class="sign_input">
       <input type="email" class="sign" v-model="lineID" placeholder="lINE ID" />
     </div>
-    <div class="sign_button">LINE登録</div>
+    <div class="sign_button" v-on:click="signUp">LINE登録</div>
   </div>
 </template>
 
 <script>
 import firebase from "firebase"
-// import Line from "@index.js"
+import line from "@/components/index.js"
+// プロップス（親から子に渡す）を書く
 
 export default {
   data() {
@@ -21,19 +22,24 @@ export default {
   },
   methods: {
     // firebaseにLINE iDを登録する
+    // これドキュメントの追加でLINEidとユーザーid結びつければいい？
     signUp() {
       if (this.lineId != this.lineId) {
         alert("LINE IDを入力してください")
         return
       }
-      firebase.auth().then((res) => {
-        console.log(res)
-        const lineInfo = {
-          line_id: this.lineId,
-        }
-        this.$router.push("/")
-        firebase.firestore().collection("line").add(lineInfo)
-      })
+      firebase.firestore().collection("lineid").add({
+        this.lineId: ""
+      });
+    }
+      // firebase.auth().then((res) => {
+      //   console.log(res)
+      //   const lineInfo = {
+      //     line_id: this.lineId,
+      //   }
+      //   this.$router.push("/")
+      //   firebase.firestore().collection("line").add(lineInfo)
+      // })
       //         .catch(function(error) {
       //   // Handle Errors here.
       //   const errorCode = error.code;
