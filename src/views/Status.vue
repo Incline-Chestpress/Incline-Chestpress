@@ -21,6 +21,12 @@ export default {
 <style scoped>
 #status {
   margin-left: 200px;
-  margin-top: 50px;
+  background-color: rgba(255, 255, 255, 0.2);
+  background-blend-mode: lighten;
+  background-image: url("../assets/status.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
 }
 </style>
