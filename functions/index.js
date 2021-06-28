@@ -1,4 +1,4 @@
-"use strict"
+// "use strict"
 
 const functions = require("firebase-functions")
 const express = require("express")
@@ -16,7 +16,7 @@ app.post("/webhook", line.middleware(config), (req, res) => {
   console.log(req.body.events)
   Promise.all(req.body.events.map(handleEvent))
     .then((result) => res.json(result))
-    .catch((result) => console.log("error!!!"))
+    .catch((result) => console.log(result))
 })
 
 const client = new line.Client(config)

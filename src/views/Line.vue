@@ -71,7 +71,7 @@ export default {
 }
 /* LINE IDインプット */
 .sign {
-  width: 50%;
+  width: 45%;
   height: 25px;
   font-size: 15px;
   line-height: 22px;
