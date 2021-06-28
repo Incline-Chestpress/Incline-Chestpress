@@ -12,14 +12,21 @@ import Chart from "@/components/Chart.vue"
 export default {
   components: {
     // Aside,
-    // TopBar,    
+    // TopBar,
     Chart,
-     },
+  },
 }
 </script>
 
 <style scoped>
 #status {
   margin-left: 200px;
+  background-color: rgba(255, 255, 255, 0.2);
+  background-blend-mode: lighten;
+  background-image: url("../assets/status.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
 }
 </style>
