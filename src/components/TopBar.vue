@@ -4,6 +4,7 @@
       href="https://fonts.googleapis.com/css?family=Acme"
       rel="stylesheet"
     />
+
     <h2>Training Day</h2>
     <!-- {{ user }} -->
     <nav>
@@ -48,12 +49,14 @@ export default {
 </script>
 <style scoped>
 .header {
+  display: block;
   background: white;
   height: 50px;
+  width: 100%;
   opacity: 0.6;
   font-family: acme;
-  /* position: fixed;
-  top: 0; */
+  position: fixed;
+  top: 0;
 }
 
 .header h2 {
