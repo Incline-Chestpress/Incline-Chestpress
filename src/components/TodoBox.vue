@@ -15,22 +15,26 @@
       </div>
       <table class="card-container">
         <tr id="heading">
-          <th class="headings task">Task</th>
-          <th class="headings weight">Weight</th>
-          <th class="headings number">Number of Time</th>
-          <th class="headings set">Set</th>
+          <th id="heading-task" class="headings">Task</th>
+          <th id="heading-weight" class="headings">Weight</th>
+          <th id="heading-number" class="headings">Number of Time</th>
+          <th id="heading-set" class="headings">Set</th>
         </tr>
         <tr class="todo-card" v-for="(todo, i) in todos" v-bind:key="i">
           <!-- <td>{{ i }}</td> -->
-          <td class="todos task">{{ todo.tasks }}</td>
-          <td class="todos weight">{{ todo.weights }}kg</td>
-          <td class="todos number">{{ todo.numbers }}</td>
-          <td class="todos set">{{ todo.sets }}</td>
-          <td id="delete-button" v-on:click="deleteTodo(i)">
+          <label class="todo-card-label" for="">
+            <input id="check-box" type="checkbox" class="todo-button" />
+
+            <td id="todo-task" class="todos task">{{ todo.tasks }}</td>
+            <td class="todos weight">{{ todo.weights }}kg</td>
+            <td class="todos number">{{ todo.numbers }}</td>
+            <td class="todos set">{{ todo.sets }}</td>
+          </label>
+          <td id="delete-button" class="todo-button" v-on:click="deleteTodo(i)">
             <img
               src="@/components/img/DeleteButton.png"
-              height="15px"
-              width="15px"
+              height="20px"
+              width="20px"
               alt=""
             />
           </td>
@@ -135,6 +139,7 @@ export default {
 <style scoped>
 #todo-box {
   font-family: acme;
+  margin-top: 50px;
   /* margin-top: 20px; */
 }
 .box {
@@ -167,31 +172,38 @@ export default {
   cursor: pointer;
 }
 #heading {
-  width: 420px;
+  width: 500px;
   height: 50px;
   display: flex;
 }
 .headings {
   text-align: center;
+  width: 22%;
 }
+
 .todos {
   text-align: center;
   line-height: 40px;
 }
 .task {
-  width: 120px;
+  width: 23%;
+  /* overflow: scroll; */
+  overflow-x: auto;
+  white-space: nowrap;
 }
 .number {
-  width: 120px;
+  width: 24%;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 .weight {
-  width: 120px;
+  width: 24%;
 }
 .set {
-  width: 90px;
+  width: 24%;
 }
 .todo-card {
-  width: 420px;
+  width: 480px;
   display: flex;
   /* justify-content: start; */
   border: 2px black solid;
@@ -200,7 +212,20 @@ export default {
   margin: 1px 1px;
   /* width: 95%; */
 }
-.task-card {
+.todo-card-label {
+  display: flex;
+  width: 90%;
+}
+.todo-button {
+  margin: auto;
+}
+#check-box {
+  margin-left: 5px;
+  height: 40px;
+  width: auto;
+}
+
+/* .task-card {
   width: 120px;
   line-height: 40px;
 }
@@ -214,16 +239,18 @@ export default {
 }
 .set-card {
   width: 90px;
-  /* margin-left: 15px; */
+  margin-left: 15px;
   line-height: 40px;
-}
-.delete-button {
-  height: 40px;
+} */
+#delete-button {
+  line-height: 40px;
   padding-top: 5px;
   padding-bottom: 5px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  /* margin-right: 10px; */
+  margin: auto 10px;
 }
-.delete-button:hover {
+#delete-button:hover {
   cursor: pointer;
 }
 .item-container {
@@ -232,6 +259,7 @@ export default {
   padding: 5px;
   margin: 20px auto 0;
   border-radius: 5px;
+  background: rgba(255, 255, 255, 0.7);
 }
 .task-td {
   width: 40%;

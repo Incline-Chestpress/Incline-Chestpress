@@ -12,14 +12,15 @@ import Chart from "@/components/Chart.vue"
 export default {
   components: {
     // Aside,
-    // TopBar,    
+    // TopBar,
     Chart,
-     },
+  },
 }
 </script>
 
 <style scoped>
 #status {
   margin-left: 200px;
+  margin-top: 50px;
 }
 </style>
