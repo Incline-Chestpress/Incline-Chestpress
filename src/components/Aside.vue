@@ -10,6 +10,9 @@
         <router-link to="/status" class="link status">Status</router-link>
       </li>
       <li>
+        <router-link to="/report" class="link report">Report</router-link>
+      </li>
+      <li>
         <router-link to="/line" class="link line-setting"
           >Line Setting</router-link
         >

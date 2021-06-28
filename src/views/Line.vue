@@ -1,21 +1,99 @@
-  // チャネルシークレット c8c54f10b02b0ffb72a17982e0b91054
-  // チャネルアクセストークン prboDo2Eg3uiq5kyY8HQX6eVN7eS/pIz1cuWF+9OKyxhEX2OebotKUbWSb0hLo4EcHaV7KvdZlvpjOiKbFh5odcTCetBkUUoPhn5LSNY3IK8q9RZ+1wqJZiw+c6bz5Z3HgVMc8mwypYY3CuNjn374wdB04t89/1O/w1cDnyilFU=
+<template>
+  <div class="SignUp">
+    <!-- LINE送信希望者のIDを習得 -->
+    <div class="sign_title">毎朝9:00にトレーニングメニューが届きます</div>
+    <div class="sign_input">
+      <input type="email" class="sign" v-model="lineId" placeholder="LINE ID" />
+    </div>
+    <button class="sign_button" v-on:click="signUp">LINE登録</button>
+  </div>
+</template>
 
-const line = require('@line/bot-sdk')
+<script>
+import firebase from "firebase"
+// import line from "@/components/index.js"
 
-const client = new line.Client({
-  channelAccessToken: '<channel access token>'
-})
-
-const message = {
-  type: 'text',
-  text: 'ラインテスト'
+export default {
+  data() {
+    return {
+      uid: "",
+      lineId: "",
+    }
+  },
+  methods: {
+    // firebaseにLINE iDを登録する
+    // ドキュメントにLINEid追加、ユーザーidと結びつける
+    signUp() {
+      if (this.lineId != this.lineId) {
+        alert("LINE IDを入力してください")
+        return
+      }
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          this.uid = user.uid
+        } else {
+          // this.uid = Number(this.length)
+        }
+      })
+      firebase.firestore().collection("lineid").add({
+        uid: this.uid,
+        lineId: this.lineId,
+      })
+      alert("LINE登録が完了しました")
+    },
+  },
 }
+</script>
 
-client.replyMessage('<replyToken>', message)
-  .then(() => {
-    ...
-  })
-  .catch((err) => {
-    // error handling
-  })
+<style>
+.SignUp {
+  margin: auto;
+  /* width: 85%; */
+  /* max-width: 400px;
+  min-width: 300px; */
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  background-blend-mode: lighten;
+  background-image: url("../assets/main.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+/* タイトル */
+.sign_title {
+  padding-top: 30px;
+  color: #383838;
+  font-weight: bold;
+}
+.sign_input {
+  display: flex;
+}
+/* LINE IDインプット */
+.sign {
+  width: 50%;
+  height: 25px;
+  font-size: 15px;
+  line-height: 22px;
+  border: 0.5px solid #f2e9e3;
+  border-radius: 5px;
+  align-items: center;
+  margin: 10px auto;
+}
+/* LINE登録ボタン */
+.sign_button {
+  border: 1px solid #52e01a;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background-color: #52e01a;
+  width: 100px;
+  height: 30px;
+  margin: 5px auto;
+  display: flex;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+</style>
