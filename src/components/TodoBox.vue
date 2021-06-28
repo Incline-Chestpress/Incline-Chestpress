@@ -22,11 +22,12 @@
         </tr>
         <tr class="todo-card" v-for="(todo, i) in todos" v-bind:key="i">
           <!-- <td>{{ i }}</td> -->
+          <input type="checkbox" class="todo-button" />
           <td class="todos task">{{ todo.tasks }}</td>
           <td class="todos weight">{{ todo.weights }}kg</td>
           <td class="todos number">{{ todo.numbers }}</td>
           <td class="todos set">{{ todo.sets }}</td>
-          <td id="delete-button" v-on:click="deleteTodo(i)">
+          <td id="delete-button" class="todo-button" v-on:click="deleteTodo(i)">
             <img
               src="@/components/img/DeleteButton.png"
               height="15px"
@@ -169,6 +170,7 @@ export default {
 #heading {
   width: 420px;
   height: 50px;
+  display: flex;
 }
 .headings {
   text-align: center;
@@ -199,7 +201,7 @@ export default {
   margin: 1px 1px;
   /* width: 95%; */
 }
-.task-card {
+/* .task-card {
   width: 120px;
   line-height: 40px;
 }
@@ -213,9 +215,9 @@ export default {
 }
 .set-card {
   width: 90px;
-  /* margin-left: 15px; */
+  margin-left: 15px;
   line-height: 40px;
-}
+} */
 .delete-button {
   height: 40px;
   padding-top: 5px;
@@ -231,6 +233,7 @@ export default {
   padding: 5px;
   margin: 20px auto 0;
   border-radius: 5px;
+  background: rgba(255, 255, 255, 0.7);
 }
 .task-td {
   width: 40%;

@@ -5,8 +5,8 @@
       rel="stylesheet"
     />
     <!-- <TopBar /> -->
-    <div class="to-my-page">
-      <router-link to="/myPage"> MyPage </router-link>
+    <div class="link">
+      <router-link class="my-page" to="/myPage"> MyPage </router-link>
     </div>
   </div>
 </template>
@@ -37,7 +37,12 @@ export default {
   width: 100%;
   height: 100vh;
 }
-
+/* .link {
+  height: 400px;
+  width: 400px;
+  border: black 2px;
+  border-radius: 50%;
+} */
 body,
 html {
   margin: 0;
