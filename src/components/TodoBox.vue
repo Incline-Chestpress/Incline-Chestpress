@@ -139,6 +139,7 @@ export default {
 <style scoped>
 #todo-box {
   font-family: acme;
+  margin-top: 50px;
   /* margin-top: 20px; */
 }
 .box {
